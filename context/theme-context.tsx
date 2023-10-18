@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, createContext, useContext } from "react";
-
+import dynamic from "next/dynamic";
 type Theme = "light" | "dark";
 
 type ThemeContextProviderProps = {
@@ -15,7 +15,7 @@ type ThemeContextType = {
 
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
-export default function ThemeContextProvider({
+function ThemeContextProvider({
   children,
 }: ThemeContextProviderProps) {
   const [theme, setTheme] = useState<Theme>("light");
@@ -68,3 +68,7 @@ export function useTheme() {
 
   return context;
 }
+
+export default dynamic(() => Promise.resolve(ThemeContextProvider), {
+  ssr: false,
+});
