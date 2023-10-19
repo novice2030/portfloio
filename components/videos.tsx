@@ -18,9 +18,9 @@ import { vidData } from "@/lib/data";
 import getYouTubeThumbnail from "youtube-thumbnail";
 // import { motion } from "framer-motion";
 
-interface ImageObject {
+interface VideoObject {
   _id: string;
-  imageuri: string;
+  videouri: string;
   alt: string;
 }
 
@@ -39,7 +39,7 @@ async function getData() {
 function Test() {
   const { ref } = useSectionInView("Videos", 0.5);
 
-  const [videos, setVideos] = useState([]);
+  const [videos, setVideos] = useState<VideoObject[]>([]);
 
   useEffect(() => {
     getData().then((data) => {
@@ -53,8 +53,8 @@ function Test() {
     return url.searchParams.get("v");
   };
 
-  const videoThumbnails = vidData.map((videoLink, index) => {
-    const videoId = extractVideoId(videoLink.uri);
+  const videoThumbnails = videos.map((videoLink:VideoObject, index) => {
+    const videoId = extractVideoId(videoLink.videouri);
     const thumbnail = getYouTubeThumbnail(videoId);
     const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
     const alt = "video thumbnail";
