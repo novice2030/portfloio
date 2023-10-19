@@ -14,7 +14,7 @@ export default async function Home() {
       <About />
       <Projects />
       <div className="my-10"></div>
-      {/* <Videos /> */}
+      <Videos />
       <div className="my-10"></div>
       <Exihibition />
       <div className="my-10"></div>

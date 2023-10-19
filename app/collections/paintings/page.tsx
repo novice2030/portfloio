@@ -1,12 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import "./page.styles.css";
-import {
-  Button,
-  Dialog,
-  DialogHeader,
-  DialogBody,
-} from "@material-tailwind/react";
+// import {
+//   Button,
+//   Dialog,
+//   DialogHeader,
+//   DialogBody,
+// } from "@material-tailwind/react";
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import dynamic from "next/dynamic";
 
@@ -87,7 +87,7 @@ const Page: React.FC<PageProps> = (props) => {
           />
         ))}
       </div>
-      <Dialog
+      {/* <Dialog
         open={open}
         handler={handleOpen}
         className="fixed top-0 bottom-0 left-0 right-0 m-auto w-[50%] h-[60%] "
@@ -107,7 +107,7 @@ const Page: React.FC<PageProps> = (props) => {
             className="h-full mx-auto object-contain "
           />
         </DialogBody>
-      </Dialog>
+      </Dialog> */}
     </div>
   );
 };
