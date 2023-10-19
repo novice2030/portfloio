@@ -14,6 +14,7 @@ import dynamic from "next/dynamic";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import { vidData } from "@/lib/data";
+// @ts-ignore
 import getYouTubeThumbnail from "youtube-thumbnail";
 // import { motion } from "framer-motion";
 
@@ -47,7 +48,7 @@ function Test() {
     });
   }, []);
 
-  const extractVideoId = (videoLink) => {
+  const extractVideoId = (videoLink:string) => {
     const url = new URL(videoLink);
     return url.searchParams.get("v");
   };

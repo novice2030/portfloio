@@ -10,6 +10,21 @@ import "./page.styles.css";
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import dynamic from "next/dynamic";
 
+// @ts-ignore
+import Modal from 'react-modal';
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
+
+
 interface Image {
   url: string;
   className: string;
@@ -26,12 +41,24 @@ interface PageProps {}
 const Page: React.FC<PageProps> = (props) => {
   const [images, setImages] = useState<Image[]>([]);
   const [imageObjects, setImageObjects] = useState<Image[]>([]);
-  const [open, setOpen] = useState<boolean>(false);
+  // const [open, setOpen] = useState<boolean>(false);
   const [activeImageURL, setActiveImageURL] = useState<string>("");
 
-  const handleOpen = () => {
-    setOpen(!open);
-  };
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+
+
+  // const handleOpen = () => {
+  //   setOpen(!open);
+  // };
 
   async function getData() {
     let res = await fetch("/api/images", {
@@ -69,7 +96,7 @@ const Page: React.FC<PageProps> = (props) => {
         className={c}
         onClick={() => {
           setActiveImageURL(imageUrl);
-          handleOpen();
+          openModal();
         }}
         style={{ backgroundImage: `url(${imageUrl})` }}
       ></div>
@@ -87,6 +114,20 @@ const Page: React.FC<PageProps> = (props) => {
           />
         ))}
       </div>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+   
+          <XMarkIcon onClick={closeModal} strokeWidth={2} className="ml-auto mb-4 w-6 h-6 text-black text-lg cursor-pointer" />
+      
+        <img
+            src={activeImageURL}
+            className="h-[65vh]  mx-auto object-contain "
+          />
+      </Modal>
       {/* <Dialog
         open={open}
         handler={handleOpen}
