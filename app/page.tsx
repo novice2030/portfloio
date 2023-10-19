@@ -13,11 +13,9 @@ export default async function Home() {
       <SectionDivider />
       <About />
       <Projects />
-      <div className="my-10"></div>
       <Videos />
-      <div className="my-10"></div>
       <Exihibition />
-      <div className="my-10"></div>
+      <div className="mb-16"></div>
       <Contact />
     </main>
   );

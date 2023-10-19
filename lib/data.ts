@@ -3,7 +3,6 @@ import { CgWorkAlt } from "react-icons/cg";
 import { FaReact } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
 
-
 export const links = [
   {
     name: "Home",
@@ -17,13 +16,14 @@ export const links = [
     name: "Paintings",
     hash: "#paintings",
   },
-  {
-    name: "Exhibitions",
-    hash: "#exhibitions",
-  },
+
   {
     name: "Videos",
     hash: "#videos",
+  },
+  {
+    name: "Exhibitions",
+    hash: "#exhibitions",
   },
   {
     name: "Contact",
@@ -106,3 +106,18 @@ export const skillsData = [
   "Django",
   "Framer Motion",
 ] as const;
+
+export const vidData = [
+  {
+    uri: "https://www.youtube.com/watch?v=i4ZuseKFBF0",
+    alt: "video",
+  },
+  {
+    uri: "https://www.youtube.com/watch?v=WxYgXmZ9xh8",
+    alt: "video",
+  },
+  {
+    uri: "https://www.youtube.com/watch?v=2fDzCWNS3ig",
+    alt: "video",
+  },
+];
